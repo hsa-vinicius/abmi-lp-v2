@@ -87,57 +87,13 @@
       padding: 0 24px 48px;
     }
 
-    /* Iframe do Cal.com — ocupa toda a área disponível */
-    #cal-inline {
+    #my-cal-inline {
       width: 100%;
       min-height: 650px;
-      border: none;
       border-radius: 12px;
-      background: var(--branco);
-      box-shadow: 0 4px 24px rgba(0,0,0,.10);
       overflow: hidden;
-    }
-
-    /*
-      ────────────────────────────────────────────────────
-      PLACEHOLDER — remover quando integrar o Cal.com
-      ────────────────────────────────────────────────────
-    */
-    .cal-placeholder {
-      width: 100%;
-      min-height: 650px;
-      border-radius: 12px;
-      background: var(--branco);
       box-shadow: 0 4px 24px rgba(0,0,0,.10);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      padding: 48px 32px;
-      text-align: center;
-      border: 2px dashed rgba(201,168,76,.35);
-    }
-    .cal-placeholder .icon { font-size: 52px; }
-    .cal-placeholder h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--verde);
-    }
-    .cal-placeholder p { font-size: 14px; color: var(--cinza); max-width: 420px; line-height: 1.7; }
-    .cal-placeholder code {
-      display: inline-block;
-      background: var(--off-white);
-      border: 1px solid rgba(201,168,76,.3);
-      border-radius: 6px;
-      padding: 12px 20px;
-      font-family: monospace;
-      font-size: 13px;
-      color: var(--verde);
-      margin-top: 4px;
-      text-align: left;
-      line-height: 1.8;
+      background: var(--branco);
     }
 
     /* ── Rodapé simples ── */
@@ -173,58 +129,29 @@
     <p>Escolha o melhor horário para conversar com nossa equipe — a sessão é gratuita e dura 30 minutos.</p>
   </div>
 
-  <!-- Calendário -->
+  <!-- Calendário Cal.com -->
   <div class="cal-wrap">
-
-    <!--
-    ══════════════════════════════════════════════════
-    INTEGRAÇÃO CAL.COM
-    ══════════════════════════════════════════════════
-
-    1. Delete o bloco <div class="cal-placeholder">...</div>
-    2. Descomente e configure o bloco abaixo com sua URL do Cal.com
-    3. Adicione o script do Cal.com antes de </body>
-
-    ──────────────────────────────────────────────────
-    EXEMPLO:
-
-    <div id="my-cal-inline"
-         data-cal-link="mafer-pizzoni/sessao-estrategica"
-         data-cal-config='{"layout":"month_view"}'
-         style="width:100%;min-height:650px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
-    </div>
-
-    <script type="text/javascript">
-      (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};"init"in Cal||Cal("init",{origin:"https://app.cal.com"});})(window,"https://app.cal.com/embed/embed.js","init");
-      Cal("inline", {
-        elementOrSelector: "#my-cal-inline",
-        calLink: "mafer-pizzoni/sessao-estrategica",
-        layout: "month_view",
-      });
-    </script>
-
-    ══════════════════════════════════════════════════
-    -->
-
-    <!-- REMOVER quando integrar o Cal.com ↓ -->
-    <div class="cal-placeholder">
-      <div class="icon">📅</div>
-      <h3>Calendário de agendamento</h3>
-      <p>Aqui aparece o Cal.com. Para ativar, substitua este bloco pelo embed inline conforme as instruções no comentário acima.</p>
-      <code>
-        URL do evento: cal.com/<strong>seu-usuario/sessao-estrategica</strong><br />
-        Tipo de embed: <strong>Inline</strong><br />
-        Layout: <strong>month_view</strong>
-      </code>
-    </div>
-    <!-- REMOVER quando integrar o Cal.com ↑ -->
-
+    <div id="my-cal-inline"></div>
   </div>
 
   <!-- Footer -->
   <footer>
     © 2025 ABMI – Academia Brasileira de Marketing Imobiliário
   </footer>
+
+  <script type="text/javascript">
+    (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};"init"in Cal||Cal("init",{origin:"https://app.cal.com"});})(window,"https://app.cal.com/embed/embed.js","init");
+    Cal("inline", {
+      elementOrSelector: "#my-cal-inline",
+      calLink: "team/metro-quadrado/consultoria-estrategica",
+      layout: "month_view",
+    });
+    Cal("ui", {
+      theme: "light",
+      styles: { branding: { brandColor: "#1A3D2B" } },
+      hideEventTypeDetails: false,
+    });
+  </script>
 
 </body>
 </html>
