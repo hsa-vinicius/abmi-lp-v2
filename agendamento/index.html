@@ -6,393 +6,154 @@
   <title>Agende sua Sessão Estratégica – ABMI</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    /* ─── CSS Variables ─── */
     :root {
-      --verde:        #1A3D2B;
-      --verde-mid:    #234d37;
-      --dourado:      #C9A84C;
-      --dourado-lite: #dfc06e;
-      --dourado-dark: #a8862d;
-      --off-white:    #F9F6F0;
-      --branco:       #FFFFFF;
-      --cinza-100:    #F4F4F4;
-      --cinza-300:    #D1D1D1;
-      --cinza-600:    #6B6B6B;
-      --cinza-900:    #1A1A1A;
-      --vermelho:     #E53E3E;
-      --radius:       8px;
-      --shadow-sm:    0 2px 8px rgba(0,0,0,.08);
-      --shadow-md:    0 6px 24px rgba(0,0,0,.12);
-      --shadow-lg:    0 16px 48px rgba(0,0,0,.18);
-      --transition:   0.35s ease;
+      --verde:    #1A3D2B;
+      --dourado:  #C9A84C;
+      --off-white:#F9F6F0;
+      --branco:   #FFFFFF;
+      --cinza:    #6B6B6B;
     }
 
-    /* ─── Reset ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html, body { height: 100%; }
     body {
       font-family: 'Inter', sans-serif;
-      color: var(--cinza-900);
       background: var(--off-white);
-      overflow-x: hidden;
+      color: var(--verde);
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
     }
     img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
 
-    /* ─── Utilities ─── */
-    .container { width: 100%; max-width: 780px; margin: 0 auto; padding: 0 24px; }
-    .container-wide { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* ─── Animations ─── */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: .15s; }
-    .delay-2 { transition-delay: .30s; }
-    .delay-3 { transition-delay: .45s; }
-
-    /* ─── Nav ─── */
+    /* ── Nav ── */
     nav {
       background: var(--verde);
-      box-shadow: 0 2px 12px rgba(0,0,0,.25);
-      position: relative;
-      z-index: 10;
-    }
-    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 72px;
+      height: 68px;
+      flex-shrink: 0;
     }
-    .nav-logo img { height: 44px; width: auto; }
+    nav img { height: 40px; width: auto; }
 
-    /* ─── Timer ─── */
-    .timer-bar {
-      background: var(--verde);
-      border-bottom: 1px solid rgba(201,168,76,.2);
-      padding: 12px 0;
-    }
-    .timer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      font-size: 14px;
-      color: rgba(255,255,255,.8);
-    }
-    .timer-label { font-weight: 600; }
-    .timer-display {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .timer-box {
-      background: rgba(201,168,76,.15);
-      border: 1px solid rgba(201,168,76,.3);
-      border-radius: 6px;
-      padding: 4px 10px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--dourado);
-      min-width: 44px;
-      text-align: center;
-      transition: background .5s, border-color .5s, color .5s;
-    }
-    .timer-box.urgent {
-      background: rgba(229,62,62,.15);
-      border-color: var(--vermelho);
-      color: var(--vermelho);
-    }
-    .timer-sep { color: var(--dourado); font-size: 20px; font-weight: 700; }
-    .timer-sep.urgent { color: var(--vermelho); }
-
-    /* ─── Hero ─── */
+    /* ── Hero ── */
     .hero {
-      padding: 60px 0 48px;
       text-align: center;
+      padding: 44px 24px 32px;
+      flex-shrink: 0;
     }
-    .hero-badge-received {
+    .badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       background: #f0fdf4;
       border: 1.5px solid #86efac;
       border-radius: 40px;
-      padding: 8px 20px;
-      font-size: 14px;
-      font-weight: 700;
+      padding: 6px 18px;
+      font-size: 13px;
+      font-weight: 600;
       color: #15803d;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .hero h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(34px, 5vw, 54px);
+      font-size: clamp(30px, 5vw, 46px);
       font-weight: 700;
+      line-height: 1.15;
       color: var(--verde);
-      line-height: 1.1;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     .hero h1 em { color: var(--dourado); font-style: italic; }
-    .hero-sub {
-      font-size: 17px;
-      color: var(--cinza-600);
-      line-height: 1.7;
-      max-width: 560px;
-      margin: 0 auto 16px;
+    .hero p {
+      font-size: 16px;
+      color: var(--cinza);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
-    /* ─── Ticker ─── */
-    .ticker-wrap {
-      background: var(--verde);
-      overflow: hidden;
-      padding: 12px 0;
-      margin: 32px 0 0;
+    /* ── Cal.com container ── */
+    .cal-wrap {
+      flex: 1;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
     }
-    .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: ticker-scroll 28s linear infinite;
-    }
-    .ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker-scroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 28px;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(255,255,255,.85);
-      white-space: nowrap;
-    }
-    .ticker-item::before { content: '✦'; color: var(--dourado); font-size: 10px; }
 
-    /* ─── Main Card ─── */
-    .main-content { padding: 48px 0 80px; }
-    .card {
+    /* Iframe do Cal.com — ocupa toda a área disponível */
+    #cal-inline {
+      width: 100%;
+      min-height: 650px;
+      border: none;
+      border-radius: 12px;
       background: var(--branco);
-      border-radius: 16px;
-      padding: 40px 36px;
-      box-shadow: var(--shadow-md);
-      margin-bottom: 24px;
-    }
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--verde);
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--off-white);
-    }
-
-    /* ─── Benefits ─── */
-    .benefits-list { display: flex; flex-direction: column; gap: 16px; }
-    .benefit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .benefit-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      background: linear-gradient(135deg, var(--verde), var(--verde-mid));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-    }
-    .benefit-text strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--verde);
-      margin-bottom: 3px;
-    }
-    .benefit-text span { font-size: 14px; color: var(--cinza-600); line-height: 1.6; }
-
-    /* ─── O que acontece depois ─── */
-    .steps-list { display: flex; flex-direction: column; gap: 0; }
-    .step {
-      display: flex;
-      gap: 20px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--cinza-100);
-      position: relative;
-    }
-    .step:last-child { border-bottom: none; }
-    .step-num {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      background: var(--dourado);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--verde);
-    }
-    .step-content strong {
-      display: block;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--verde);
-      margin-bottom: 4px;
-    }
-    .step-content span { font-size: 14px; color: var(--cinza-600); line-height: 1.6; }
-
-    /* ─── Cal.com Embed ─── */
-    .cal-section { padding: 0 0 0; }
-    .cal-card {
-      background: var(--branco);
-      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
       overflow: hidden;
-      box-shadow: var(--shadow-md);
-      border: 2px solid rgba(201,168,76,.25);
-      margin-bottom: 24px;
     }
-    .cal-header {
-      background: var(--verde);
-      padding: 20px 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .cal-header-text h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--branco);
-    }
-    .cal-header-text p { font-size: 13px; color: rgba(255,255,255,.65); margin-top: 2px; }
-    .cal-badge {
-      background: rgba(201,168,76,.2);
-      border: 1px solid rgba(201,168,76,.4);
-      border-radius: 6px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--dourado);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-    .cal-body { padding: 0; min-height: 600px; position: relative; }
 
-    /* Placeholder de instrução (remover ao configurar Cal.com) */
+    /*
+      ────────────────────────────────────────────────────
+      PLACEHOLDER — remover quando integrar o Cal.com
+      ────────────────────────────────────────────────────
+    */
     .cal-placeholder {
+      width: 100%;
+      min-height: 650px;
+      border-radius: 12px;
+      background: var(--branco);
+      box-shadow: 0 4px 24px rgba(0,0,0,.10);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 500px;
+      gap: 16px;
       padding: 48px 32px;
       text-align: center;
-      background: repeating-linear-gradient(
-        45deg,
-        var(--off-white),
-        var(--off-white) 10px,
-        #f0ede7 10px,
-        #f0ede7 20px
-      );
+      border: 2px dashed rgba(201,168,76,.35);
     }
-    .cal-placeholder-icon { font-size: 56px; margin-bottom: 20px; }
-    .cal-placeholder h4 {
+    .cal-placeholder .icon { font-size: 52px; }
+    .cal-placeholder h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--verde);
-      margin-bottom: 12px;
     }
-    .cal-placeholder p {
-      font-size: 14px;
-      color: var(--cinza-600);
-      max-width: 440px;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .cal-instruction {
-      background: var(--verde);
-      color: var(--branco);
-      border-radius: 10px;
-      padding: 20px 24px;
-      font-size: 13px;
-      line-height: 1.8;
-      text-align: left;
-      max-width: 480px;
-    }
-    .cal-instruction strong { color: var(--dourado); }
-    .cal-instruction code {
-      background: rgba(255,255,255,.1);
-      border-radius: 4px;
-      padding: 1px 6px;
+    .cal-placeholder p { font-size: 14px; color: var(--cinza); max-width: 420px; line-height: 1.7; }
+    .cal-placeholder code {
+      display: inline-block;
+      background: var(--off-white);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 6px;
+      padding: 12px 20px;
       font-family: monospace;
-      font-size: 12px;
-      color: var(--dourado-lite);
-    }
-
-    /* ─── Vagas Badge ─── */
-    .vagas-badge {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #fff8e8;
-      border: 1.5px solid rgba(201,168,76,.4);
-      border-radius: 10px;
-      padding: 16px 24px;
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 13px;
       color: var(--verde);
-      text-align: center;
-      margin-top: 8px;
-    }
-    .vagas-dot {
-      width: 10px;
-      height: 10px;
-      background: #f59e0b;
-      border-radius: 50%;
-      animation: blink 1.5s ease-in-out infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(.8); }
+      margin-top: 4px;
+      text-align: left;
+      line-height: 1.8;
     }
 
-    /* ─── Footer ─── */
+    /* ── Rodapé simples ── */
     footer {
-      background: #0f2519;
-      padding: 32px 0;
+      background: var(--verde);
       text-align: center;
+      padding: 20px 24px;
+      font-size: 12px;
+      color: rgba(255,255,255,.4);
+      flex-shrink: 0;
     }
-    .footer-logo img { height: 32px; width: auto; opacity: .7; margin: 0 auto 12px; }
-    .footer-text { font-size: 12px; color: rgba(255,255,255,.35); }
 
-    /* ─── Responsive ─── */
     @media (max-width: 600px) {
-      .hero { padding: 40px 0 32px; }
-      .card { padding: 28px 20px; }
-      .hero h1 { font-size: 32px; }
-      .timer-inner { flex-direction: column; gap: 8px; }
-      .cal-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero { padding: 32px 20px 24px; }
+      .cal-wrap { padding: 0 16px 36px; }
+      #cal-inline, .cal-placeholder { min-height: 500px; }
     }
   </style>
 </head>
@@ -400,268 +161,70 @@
 
   <!-- Nav -->
   <nav>
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="ABMI">
-        <img src="https://maferpizzoni.com.br/wp-content/uploads/2025/11/logo-abmi.webp" alt="ABMI – Academia Brasileira de Marketing Imobiliário" />
-      </a>
-    </div>
+    <a href="/" aria-label="ABMI">
+      <img src="https://maferpizzoni.com.br/wp-content/uploads/2025/11/logo-abmi.webp" alt="ABMI" />
+    </a>
   </nav>
 
-  <!-- Timer Bar -->
-  <div class="timer-bar">
-    <div class="timer-inner">
-      <span class="timer-label">⏳ Esta página expira em:</span>
-      <div class="timer-display">
-        <div class="timer-box" id="timer-min">08</div>
-        <span class="timer-sep" id="timer-sep">:</span>
-        <div class="timer-box" id="timer-sec">00</div>
-      </div>
-      <span style="font-size:13px;color:rgba(255,255,255,.55);">Garanta seu horário antes que expire</span>
-    </div>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">✅ Aplicação recebida</div>
+    <h1>Agende sua <em>Sessão Estratégica</em></h1>
+    <p>Escolha o melhor horário para conversar com nossa equipe — a sessão é gratuita e dura 30 minutos.</p>
   </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-badge-received fade-up">
-        ✅ Aplicação recebida com sucesso
-      </div>
-      <h1 class="fade-up delay-1">
-        Agende sua <em>Sessão Estratégica</em><br />gratuita
-      </h1>
-      <p class="hero-sub fade-up delay-2">
-        Sua aplicação foi analisada e você está qualificado para uma conversa individual com nosso time. Escolha o melhor horário abaixo.
-      </p>
+  <!-- Calendário -->
+  <div class="cal-wrap">
+
+    <!--
+    ══════════════════════════════════════════════════
+    INTEGRAÇÃO CAL.COM
+    ══════════════════════════════════════════════════
+
+    1. Delete o bloco <div class="cal-placeholder">...</div>
+    2. Descomente e configure o bloco abaixo com sua URL do Cal.com
+    3. Adicione o script do Cal.com antes de </body>
+
+    ──────────────────────────────────────────────────
+    EXEMPLO:
+
+    <div id="my-cal-inline"
+         data-cal-link="mafer-pizzoni/sessao-estrategica"
+         data-cal-config='{"layout":"month_view"}'
+         style="width:100%;min-height:650px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.10);">
     </div>
 
-    <!-- Ticker -->
-    <div class="ticker-wrap fade-up delay-3">
-      <div class="ticker-track" id="ticker">
-        <!-- items duplicados para loop infinito -->
-        <div class="ticker-item">Diagnóstico personalizado do seu perfil</div>
-        <div class="ticker-item">Estratégia customizada para o seu mercado</div>
-        <div class="ticker-item">Sem compromisso de compra</div>
-        <div class="ticker-item">Sessão 100% gratuita e online</div>
-        <div class="ticker-item">Com especialista da equipe ABMI</div>
-        <div class="ticker-item">Dúvidas respondidas ao vivo</div>
-        <div class="ticker-item">Diagnóstico personalizado do seu perfil</div>
-        <div class="ticker-item">Estratégia customizada para o seu mercado</div>
-        <div class="ticker-item">Sem compromisso de compra</div>
-        <div class="ticker-item">Sessão 100% gratuita e online</div>
-        <div class="ticker-item">Com especialista da equipe ABMI</div>
-        <div class="ticker-item">Dúvidas respondidas ao vivo</div>
-      </div>
+    <script type="text/javascript">
+      (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)};"init"in Cal||Cal("init",{origin:"https://app.cal.com"});})(window,"https://app.cal.com/embed/embed.js","init");
+      Cal("inline", {
+        elementOrSelector: "#my-cal-inline",
+        calLink: "mafer-pizzoni/sessao-estrategica",
+        layout: "month_view",
+      });
+    </script>
+
+    ══════════════════════════════════════════════════
+    -->
+
+    <!-- REMOVER quando integrar o Cal.com ↓ -->
+    <div class="cal-placeholder">
+      <div class="icon">📅</div>
+      <h3>Calendário de agendamento</h3>
+      <p>Aqui aparece o Cal.com. Para ativar, substitua este bloco pelo embed inline conforme as instruções no comentário acima.</p>
+      <code>
+        URL do evento: cal.com/<strong>seu-usuario/sessao-estrategica</strong><br />
+        Tipo de embed: <strong>Inline</strong><br />
+        Layout: <strong>month_view</strong>
+      </code>
     </div>
-  </section>
+    <!-- REMOVER quando integrar o Cal.com ↑ -->
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <div class="container">
-
-      <!-- Cal.com Embed -->
-      <div class="cal-section fade-up">
-        <div class="cal-card">
-          <div class="cal-header">
-            <div class="cal-header-text">
-              <h3>Escolha seu horário</h3>
-              <p>Sessão Estratégica · 30 min · Online (Google Meet)</p>
-            </div>
-            <div class="cal-badge">Gratuito</div>
-          </div>
-
-          <div class="cal-body">
-            <!--
-            ══════════════════════════════════════════════════════
-            INSTRUÇÃO DE CONFIGURAÇÃO — Cal.com
-            ══════════════════════════════════════════════════════
-
-            Para ativar o agendamento, substitua o bloco abaixo
-            (.cal-placeholder) pelo embed inline do Cal.com:
-
-            1. Acesse https://cal.com e crie sua conta
-            2. Configure o evento "Sessão Estratégica ABMI" (30 min)
-            3. Vá em "Embed" > "Inline" e copie o código
-            4. Cole o <div data-cal-link="..."> aqui dentro
-            5. Adicione o script do Cal antes de </body>:
-
-               <script type="text/javascript">
-                 (function (C, A, L) { ... })(window, document, "https://app.cal.com/embed/embed.js");
-               </script>
-
-            Exemplo do código que vai substituir o placeholder:
-
-            <div style="width:100%;height:100%;overflow:scroll"
-                 id="my-cal-inline"
-                 data-cal-link="sua-url/sessao-estrategica"
-                 data-cal-config='{"layout":"month_view"}'></div>
-
-            ══════════════════════════════════════════════════════
-            -->
-
-            <div class="cal-placeholder">
-              <div class="cal-placeholder-icon">📅</div>
-              <h4>Calendário de agendamento</h4>
-              <p>Aqui será exibido o calendário do Cal.com para escolha do horário da Sessão Estratégica.</p>
-              <div class="cal-instruction">
-                <strong>Como configurar:</strong><br />
-                1. Crie sua conta em <strong>cal.com</strong><br />
-                2. Configure um evento de <strong>30 minutos</strong><br />
-                3. Acesse <code>Embed → Inline</code> e copie o código<br />
-                4. Substitua este bloco pelo código do Cal.com<br />
-                5. Adicione o script do Cal.com antes do <code>&lt;/body&gt;</code>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="vagas-badge fade-up delay-1">
-          <div class="vagas-dot"></div>
-          Poucas vagas disponíveis esta semana — reserve o seu horário agora
-        </div>
-      </div>
-
-      <!-- Benefícios da sessão -->
-      <div class="card fade-up delay-1" style="margin-top:32px">
-        <div class="card-title">O que você ganha nesta sessão</div>
-        <div class="benefits-list">
-          <div class="benefit-item">
-            <div class="benefit-icon">🎯</div>
-            <div class="benefit-text">
-              <strong>Diagnóstico do seu posicionamento digital</strong>
-              <span>Vamos analisar onde você está hoje e identificar os principais gargalos que estão impedindo suas vendas online</span>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">🗺️</div>
-            <div class="benefit-text">
-              <strong>Plano personalizado para o seu perfil</strong>
-              <span>Sairá com um roteiro claro dos primeiros passos para transformar sua presença digital e atrair clientes qualificados</span>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">💡</div>
-            <div class="benefit-text">
-              <strong>Estratégias aplicáveis imediatamente</strong>
-              <span>Dicas práticas que você pode implementar ainda esta semana, independentemente de participar ou não da mentoria</span>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <div class="benefit-icon">🔓</div>
-            <div class="benefit-text">
-              <strong>Apresentação do programa completo</strong>
-              <span>Conheça em detalhes como funciona a mentoria, o que está incluso e como outros corretores estão transformando suas carreiras</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- O que acontece depois -->
-      <div class="card fade-up delay-2">
-        <div class="card-title">O que acontece depois do agendamento</div>
-        <div class="steps-list">
-          <div class="step">
-            <div class="step-num">1</div>
-            <div class="step-content">
-              <strong>Confirmação imediata por e-mail e WhatsApp</strong>
-              <span>Você receberá a confirmação do horário com o link da videochamada nos dois canais</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <div class="step-content">
-              <strong>Nossa equipe analisa seu perfil</strong>
-              <span>Antes da sessão, revisamos suas informações para personalizarmos ao máximo o diagnóstico</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <div class="step-content">
-              <strong>Sessão estratégica de 30 minutos</strong>
-              <span>Conversa direta com uma especialista da equipe ABMI — sem script genérico, sem enrolação</span>
-            </div>
-          </div>
-          <div class="step">
-            <div class="step-num">4</div>
-            <div class="step-content">
-              <strong>Se aprovado, você recebe o convite para a mentoria</strong>
-              <span>Apenas os perfis alinhados com os critérios da ABMI recebem acesso. Não é para todo mundo — e isso é intencional.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    <div class="footer-logo">
-      <img src="https://maferpizzoni.com.br/wp-content/uploads/2025/11/logo-abmi.webp" alt="ABMI" />
-    </div>
-    <p class="footer-text">© 2025 ABMI – Academia Brasileira de Marketing Imobiliário · Todos os direitos reservados</p>
+    © 2025 ABMI – Academia Brasileira de Marketing Imobiliário
   </footer>
-
-  <!-- Scripts -->
-  <script>
-    // ── IntersectionObserver para fade-up ──
-    const observer = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
-    );
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // ── Countdown Timer (8 minutos) ──
-    (function () {
-      const DURATION = 8 * 60; // segundos
-      let remaining = DURATION;
-
-      const minEl  = document.getElementById('timer-min');
-      const secEl  = document.getElementById('timer-sec');
-      const sepEl  = document.getElementById('timer-sep');
-      const URGENT = 60; // último minuto
-
-      function render () {
-        const m = Math.floor(remaining / 60);
-        const s = remaining % 60;
-        minEl.textContent = String(m).padStart(2, '0');
-        secEl.textContent = String(s).padStart(2, '0');
-
-        const isUrgent = remaining <= URGENT;
-        minEl.classList.toggle('urgent', isUrgent);
-        secEl.classList.toggle('urgent', isUrgent);
-        sepEl.classList.toggle('urgent', isUrgent);
-      }
-
-      render();
-
-      const interval = setInterval(() => {
-        if (remaining <= 0) {
-          clearInterval(interval);
-          minEl.textContent = '00';
-          secEl.textContent = '00';
-          return;
-        }
-        remaining--;
-        render();
-      }, 1000);
-    })();
-
-    // ── Cal.com placeholder — remover ao integrar ──
-    // Quando integrar o Cal.com, adicione o script deles aqui:
-    //
-    // (function (C, A, L) {
-    //   let p = function (a, ar) { a.q.push(ar); };
-    //   let d = C.document;
-    //   C.Cal = C.Cal || function () { ... };
-    // })(window, document, "https://app.cal.com/embed/embed.js");
-    //
-    // Cal("init", { origin: "https://app.cal.com" });
-    // Cal("inline", {
-    //   elementOrSelector: "#my-cal-inline",
-    //   calLink: "sua-url/sessao-estrategica",
-    //   layout: "month_view",
-    // });
-  </script>
 
 </body>
 </html>
